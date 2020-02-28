@@ -65,8 +65,10 @@ class ArrayRingBuffer:
 
 # Advantages of the above method:
 # - It's much easier to write!
+# - The array is of a small size, known in advance.*
+# - No more memory need be allocated than absolutely required.*
+
+# *This sort of thing is usually a problem with arrays!
 
 # Disadvantages:
 # - The entire array is stored in memory at all times (?).
-# 
-
