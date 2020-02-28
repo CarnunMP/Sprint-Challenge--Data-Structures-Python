@@ -8,6 +8,7 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     def append(self, item):
+        # Note: tail is most recent...
         pass
 
     def get(self):
@@ -15,6 +16,11 @@ class RingBuffer:
         list_buffer_contents = []
 
         # TODO: Your code here
+        # loop over head -> tail, appending to list_buffer_contents
+        current = self.storage.head
+        while current != None:
+            list_buffer_contents.append(current.value)
+            current = current.next
 
         return list_buffer_contents
 
