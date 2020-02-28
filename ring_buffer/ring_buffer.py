@@ -9,7 +9,18 @@ class RingBuffer:
 
     def append(self, item):
         # Note: tail is most recent...
-        pass
+        if len(self.storage) < self.capacity:
+            self.storage.add_to_tail(item)
+            self.current = self.storage.tail
+        elif len(self.storage) == self.capacity and self.current == self.storage.tail:
+            self.storage.remove_from_head()
+            self.storage.add_to_head(item)
+            self.current = self.storage.head
+        else:
+            self.current.insert_after(item)
+            self.storage.length += 1 # Needed because I just used a ListNode method!
+            self.current = self.current.next
+            self.storage.delete(self.current.next)
 
     def get(self):
         # Note:  This is the only [] allowed
