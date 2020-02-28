@@ -25,10 +25,10 @@ duplicates = []  # Return the list of duplicates in this data structure
 # names_2_BST = BinarySearchTree(names_2[0])
 
 # for i in range(1, 10000): # O(n)
-#     names_2_BST.insert(names_2[i]) # O(nlog(n))
+#     names_2_BST.insert(names_2[i]) # O(nlog(n)), average of O(1)
 
 # for name in names_1: # O(n)
-#     if names_2_BST.contains(name): # O(nlog(n))
+#     if names_2_BST.contains(name): # O(nlog(n)), average of O(1)
 #         duplicates.append(name) # O(1)
 
 ### Attempt 2 using Python's built-in _set_ (time: ~0.006s !!! :D )
