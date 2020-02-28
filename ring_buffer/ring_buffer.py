@@ -40,10 +40,25 @@ class RingBuffer:
 
 class ArrayRingBuffer:
     def __init__(self, capacity):
-        pass
+        self.current_index = 0
+        self.storage = [None] * capacity
 
     def append(self, item):
-        pass
+        if self.current_index < len(self.storage) - 1:
+            self.storage[self.current_index] = item
+            self.current_index += 1
+        elif self.current_index == len(self.storage) - 1:
+            self.storage[self.current_index] = item
+            self.current_index = 0
+        else:
+            self.storage[self.current_index] = item
+            self.current_index += 1
+
 
     def get(self):
-        pass
+        to_print = []
+        for item in self.storage:
+            if item != None:
+                to_print.append(item)
+        
+        return to_print
