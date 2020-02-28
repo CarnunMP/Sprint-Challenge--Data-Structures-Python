@@ -44,16 +44,8 @@ class ArrayRingBuffer:
         self.storage = [None] * capacity
 
     def append(self, item):
-        if self.current_index < len(self.storage) - 1:
-            self.storage[self.current_index] = item
-            self.current_index += 1
-        elif self.current_index == len(self.storage) - 1:
-            self.storage[self.current_index] = item
-            self.current_index = 0
-        else:
-            self.storage[self.current_index] = item
-            self.current_index += 1
-
+        self.storage[self.current_index] = item
+        self.current_index = self.current_index + 1 if self.current_index < len(self.storage) - 1 else 0
 
     def get(self):
         to_print = []
