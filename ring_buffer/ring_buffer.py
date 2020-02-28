@@ -48,9 +48,25 @@ class ArrayRingBuffer:
         self.current_index = self.current_index + 1 if self.current_index < len(self.storage) - 1 else 0
 
     def get(self):
-        to_print = []
-        for item in self.storage:
-            if item != None:
-                to_print.append(item)
+        # to_print = []
+        # for item in self.storage:
+        #     if item != None:
+        #         to_print.append(item)
+
+        # vvv This is faster! vvv
+        to_print = self.storage
+        for i in reversed(range((len(self.storage)))):
+            if to_print[i] == None:
+                to_print = to_print[:-1]
+            else:
+                break
         
         return to_print
+
+# Advantages of the above method:
+# - It's much easier to write!
+
+# Disadvantages:
+# - The entire array is stored in memory at all times (?).
+# 
+
