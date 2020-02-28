@@ -17,15 +17,22 @@ duplicates = []  # Return the list of duplicates in this data structure
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
-from binary_search_tree import BinarySearchTree
-names_2_BST = BinarySearchTree(names_2[0])
-for i in range(1, 10000):
-    names_2_BST.insert(names_2[i]) #O(n)
 
-for name in names_1:
-    if names_2_BST.contains(name):
-        duplicates.append(name)
-    
+### Attempt 1 using a BST, copied over from work done in the week (time: ~0.13s):
+# from binary_search_tree import BinarySearchTree
+# names_2_BST = BinarySearchTree(names_2[0])
+
+# for i in range(1, 10000): # O(n)
+#     names_2_BST.insert(names_2[i]) # O(nlog(n))
+
+# for name in names_1: # O(n)
+#     if names_2_BST.contains(name): # O(nlog(n))
+#         duplicates.append(name) # O(1)
+
+### Attempt 2 using Python's built-in _set_ (time: ~0.006s !!! :D )
+names_1_set = set(names_1)
+names_2_set = set(names_2)
+duplicates = list(names_1_set.intersection(names_2_set))
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
